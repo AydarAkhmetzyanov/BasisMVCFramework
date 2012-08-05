@@ -1,0 +1,10 @@
+section {
+   padding-top: 60px;
+}
+
+h2 + table,
+h3 + table,
+h4 + table,
+h2 + .row {
+  margin-top: 5px;
+}
