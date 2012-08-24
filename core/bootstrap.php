@@ -23,14 +23,15 @@ function renderView($template_name, $_templateData=array()){
 }
 
 function redirect($target){
-	$nurl = APPURLDIR . '$target';
+	$nurl = APPURLDIR . $target;
     header ("Location: $nurl");
 }
 
 function loadController($pathArray, $lastSegments){
 	$realPath=implode(DS, $pathArray);
 	require_once (ROOT . DS . 'MVC' . DS . 'controllers' . DS . strtolower($realPath) . '.php');
-    $controllerClassName=ucwords(end($pathArray)) . 'Controller';
+	define('CONTROLLER', end($pathArray));
+    $controllerClassName = ucwords(CONTROLLER). 'Controller';
     $controllerObject = new $controllerClassName();
 	$action='index';
 	if(count($lastSegments)!=0){
@@ -45,33 +46,32 @@ function loadController($pathArray, $lastSegments){
 }
 
 function route() {
-    //Generate array with url segments
-    global $url;
-	$urlArray = array();
-	$urlArray = explode("/", $url);
-	
-	//delete empty segments
-	foreach($urlArray as $key => $segment){
-        if (empty($segment)){
-            unset($urlArray[$key]);
+	if (isset($_GET['url'])){
+        $url = $_GET['url'];
+		$urlArray = array();
+	    $urlArray = explode("/", $url);
+	    foreach($urlArray as $key => $segment){
+            if (empty($segment)){
+                unset($urlArray[$key]);
+            }
         }
-    }
-	
-	//route to controllers
-	if (count($urlArray)==0){
+	    if (count($urlArray)==0){
+	        loadController(explode("/",DEFAULT_CONTROLLER_PATH), array());
+	    } else {
+	        $controllerPath=$urlArray;
+	    	$lastSegments=array();
+	        while (!(file_exists(ROOT . DS . 'MVC' . DS . 'controllers' . DS . strtolower(implode(DS, $controllerPath)) . '.php')) and (count($controllerPath)!=0)){
+	    	    $last=array_pop($controllerPath);
+	    	    array_unshift($lastSegments, $last);
+	    	}
+		    if(count($controllerPath)==0){
+		    	loadController(explode("/", DEFAULT_CONTROLLER_PATH), $lastSegments);
+	    	} else {
+	    		loadController($controllerPath, $lastSegments);
+	    	}
+	    }
+    } else {
 	    loadController(explode("/",DEFAULT_CONTROLLER_PATH), array());
-	} else {
-	    $controllerPath=$urlArray;
-		$lastSegments=array();
-	    while (!(file_exists(ROOT . DS . 'MVC' . DS . 'controllers' . DS . strtolower(implode(DS, $controllerPath)) . '.php')) and (count($controllerPath)!=0)){
-		    $last=array_pop($controllerPath);
-		    array_unshift($lastSegments, $last);
-		}
-		if(count($controllerPath)==0){
-			loadController(explode("/", DEFAULT_CONTROLLER_PATH), $lastSegments);
-		} else {
-			loadController($controllerPath, $lastSegments);
-		}
 	}
 }
 

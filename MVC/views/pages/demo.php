@@ -1,10 +1,11 @@
           <div class="nav-collapse">
             <ul class="nav">
+			<li><a href="http://creativestripe.com/basis/">Главная</a></li>
               <li class="active"><a href="<?=APPDIR?>demo">Демо</a></li>
               <li><a href="<?=APPDIR?>doc">Документация</a></li>
 			  <li class="divider-vertical"></li>
-			  <li><a href="<?=APPDIR?>downloads/1.0a.zip">Скачать</a></li>
-			  <li><a href="http://code.google.com/p/basis-framework/">Google Code</a></li>
+			  <li><a href="<?=APPDIR?>downloads/1.1.zip">Скачать</a></li>
+			  <li><a href="https://github.com/aydarcreatiestripe/BasisMVCFramework">GitHub</a></li>
             </ul>
           </div>
         </div>

@@ -1,10 +1,11 @@
           <div class="nav-collapse">
             <ul class="nav">
+			<li><a href="http://creativestripe.com/basis/">Главная</a></li>
               <li><a href="<?=APPDIR?>demo">Демо</a></li>
               <li class="active"><a href="<?=APPDIR?>doc">Документация</a></li>
 			  <li class="divider-vertical"></li>
-			  <li><a href="<?=APPDIR?>downloads/1.0a.zip">Скачать</a></li>
-			  <li><a href="http://code.google.com/p/basis-framework/">Google Code</a></li>
+			  <li><a href="<?=APPDIR?>downloads/1.1.zip">Скачать</a></li>
+			  <li><a href="https://github.com/aydarcreatiestripe/BasisMVCFramework">GitHub</a></li>
             </ul>
           </div>
         </div>
@@ -173,25 +174,13 @@ class PostsController extends Controller {
       <td>index.php</td>
 	  <td>Полный физический путь к папке приложения</td>
     </tr>
+	<tr>
+      <td><strong>CONTROLLER</strong></td>
+      <td>bootstrap.php</td>
+	  <td>Имя в нижнем регистре текущего контроллера без окончания ".controller". Пример: "index"</td>
+    </tr>
   </tbody>
 </table>
-<h2>Переменные</h2>
-	<table class="table table-striped">
-<thead>
-    <tr>
-      <th>Переменная</th>
-      <th>Где определена</th>
-	  <th>Определение</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>$url</strong></td>
-      <td>index.php</td>
-	  <td>$_GET['url'] url, это то куда перенаправляется гет запрос после url приложения</td>
-    </tr>
-  </tbody>
-</table>	
 	<h2>Функции</h2>
 <table class="table table-striped">
 <thead>
