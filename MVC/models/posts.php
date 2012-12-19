@@ -17,7 +17,7 @@ class Posts extends Model
 		global $creatives_siteDB;
 		if ($creatives_siteDB!=null){
         $STH = $creatives_siteDB->query
-		('SELECT name, posts from demo order by id DESC');  
+		('SELECT name, posts from demo order by id DESC LIMIT 9');  
         $STH->setFetchMode(PDO::FETCH_ASSOC);
 		return $STH;
 		} else {

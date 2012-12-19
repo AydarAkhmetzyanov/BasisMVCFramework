@@ -1,18 +1,5 @@
-          <div class="nav-collapse">
-            <ul class="nav">
-			<li><a href="http://creativestripe.com/basis/">Главная</a></li>
-              <li class="active"><a href="<?=APPDIR?>demo">Демо</a></li>
-              <li><a href="<?=APPDIR?>doc">Документация</a></li>
-			  <li class="divider-vertical"></li>
-			  <li><a href="<?=APPDIR?>downloads/1.1.zip">Скачать</a></li>
-			  <li><a href="https://github.com/aydarcreatiestripe/BasisMVCFramework">GitHub</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-<div class="container-fluid">
-      <div class="row-fluid">
+
+      <div class="row">
         <div class="span12">
           <div class="hero-unit">
             <h1>Hello, world!</h1>
@@ -21,13 +8,14 @@
           </div>
         </div><!--/span-->
       </div><!--/row-->
-	  <div class="row-fluid">
+<br>
+	  <div class="row">
   <div class="span12">
-    <div class="row-fluid">
+    <div class="row">
       <div class="span4">
-	  <div class="row-fluid">
-	      <form id="formPost" onSubmit="sendPost(); return false;" class="form-horizontal">
- <fieldset>
+	  <div class="row">
+	      <form id="formPost" onSubmit="sendPost(); return false;" class="form">
+
     <legend>Оставьте ваш отзыв</legend>
     <div class="control-group">
       <label class="control-label" for="inputName">Ваше имя</label>
@@ -41,14 +29,12 @@
               <textarea name="inputPost" required class="input-xmedium" id="inputPost" rows="3"></textarea>
             </div>
           </div>
-  </fieldset>
-  <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Отправить</button>
-          </div>
+     <button type="submit" class="btn btn-primary">Отправить</button>
+ 
 </form>
 <script>
 function sendPost(){
-$.post("<?=APPDIR?>demo/post", $("#formPost").serialize());
+$.post("<?php echo APPDIR?>demo/post", $("#formPost").serialize());
 document.getElementById('yourName').innerHTML=document.getElementById('inputName').value;
 document.getElementById('yourPost').innerHTML=document.getElementById('inputPost').value;
 $("#formPost").hide();
@@ -61,7 +47,7 @@ $(document).ready(function() {
 });
 </script>
 		 </div>
-		 <div id="your" class="row-fluid">
+		 <div id="your" class="row">
 	      <h2 id="yourName">Оставьте ваш отзыв</h2>
 	     <p id="yourPost">отзыв</p>
 		 </div>

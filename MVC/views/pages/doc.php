@@ -1,18 +1,4 @@
-          <div class="nav-collapse">
-            <ul class="nav">
-			<li><a href="http://creativestripe.com/basis/">Главная</a></li>
-              <li><a href="<?=APPDIR?>demo">Демо</a></li>
-              <li class="active"><a href="<?=APPDIR?>doc">Документация</a></li>
-			  <li class="divider-vertical"></li>
-			  <li><a href="<?=APPDIR?>downloads/1.1.zip">Скачать</a></li>
-			  <li><a href="https://github.com/aydarcreatiestripe/BasisMVCFramework">GitHub</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-	 <div class="container"> 
-<header class="jumbotron subhead" id="overview">
+ <header class="jumbotron subhead" id="overview">
   <h1>Документация Basis MVC Framework</h1>
   <p class="lead"></p>
   <div class="subnav">
@@ -21,20 +7,19 @@
       <li><a href="#folders">Структура каталогов</a></li>
 	  <li><a href="#constants">Константы и стандартные функции</a></li>
       <li><a href="#dbs">Базы данных</a></li>
-      <li><a href="#requirements">Системные требования</a></li>
 	  <li><a href="#libs">Библиотеки</a></li>
     </ul>
   </div>
 </header>
 <section id="MVC">
   <div class="page-header">
-    <h1>MVC <small>Концепция работы Basis Framework</small></h1>
+    <h2>MVC <small>Концепция работы Basis Framework</small></h2>
   </div>
 
   
-<div class="row">
-    <div class="span8">
-	<h2>MVC приложение разделено на 3 логические части</h2><br />
+<div class="row"><h2>MVC приложение разделено на 3 логические части</h2>
+    <div class="span7">
+	
       <h3>Model - Модель </h3>
       <p>Предоставляет данные, а так же методы для работы с данными. Не содержит методы представления информации.</p>
       <h3>View - Представление </h3>
@@ -42,7 +27,7 @@
 	  <h3>Controller - Контроллер </h3>
       <p>Обеспечивает связь между пользователем и системой: контролирует ввод данных пользователем и использует модель и представление для реализации необходимой реакции. Пример: Определяет что пользователь запросил личные сообщения, запрашивает у модели массив сообщений на основе запроса и передает представлению данные.</p>
     </div>
-    <div class="span4">
+    <div class="span5">
       <img src="http://www.zend-frameworks.com/images/public/mvc.png" />
     </div>
   </div>
@@ -107,7 +92,7 @@ class PostsController extends Controller {
 </section>
 <section id="folders">
   <div class="page-header">
-    <h1>Структура каталогов <small>Basis задает структуру расположения элементов приложения</small></h1>
+    <h2>Структура каталогов <small>Basis задает структуру расположения элементов приложения</small></h2>
   </div>
 
 <div class="row">
@@ -139,7 +124,7 @@ class PostsController extends Controller {
 </section>
 <section id="constants">
   <div class="page-header">
-    <h1>Константы и стандартные функции <small></small></h1>
+    <h2>Константы и стандартные функции <small></small></h2>
   </div>
 
 <div class="row">
@@ -210,7 +195,7 @@ class PostsController extends Controller {
 </section>
 <section id="dbs">
   <div class="page-header">
-    <h1>Базы данных <small>Работа с источниками данных</small></h1>
+    <h2>Базы данных <small>Работа с источниками данных</small></h2>
   </div>
 
 <div class="row">
@@ -222,34 +207,9 @@ class PostsController extends Controller {
   
   
 </section>
-<section id="requirements">
-  <div class="page-header">
-    <h1>Системные требования <small>Требования к веб-окружению</small></h1>
-  </div>
-
-<div class="row">
-    <div class="span12">
-	<p>
-	Для работы фреймворка необходим php версии >= 5.2. Так же необходимо настроить веб сервер для перенаправления запросов. Пример для Apache:
-	<pre class="prettyprint linenums">
-&lt;IfModule mod_rewrite.c&gt;
-RewriteEngine On
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-
-RewriteRule ^(.*)$ index.php?url=$1 [PT,L]
-
-&lt;/IfModule&gt;</pre>
-	</p><p>Для работы демонстрационного приложения необходимо включить поддержку коротких открывающих тегов.</p>
-	</div>
-</div>
-  
-  
-</section>
 <section id="libs">
   <div class="page-header">
-    <h1>Библиотеки <small>Описание стандартных библиотек и добавление сторонних</small></h1>
+    <h2>Библиотеки <small>Описание стандартных библиотек и добавление сторонних</small></h2>
   </div>
 
 <div class="row">

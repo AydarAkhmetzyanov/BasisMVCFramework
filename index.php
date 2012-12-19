@@ -28,10 +28,8 @@ define('APPURLDIR', getAppURLDir());
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', realpath(dirname(__FILE__)));
 
-$url = $_GET['url'];
-
 require_once (ROOT . DS . 'config' . DS . 'main.php');
 require_once (ROOT . DS . 'config' . DS . 'db.php');
 require_once (ROOT . DS . 'core' . DS . 'bootstrap.php');
 
-echo '<!--'.round(timeMeasure()-TIMESTART, 6).' sec. -->';
+//echo '<!--'.round(timeMeasure()-TIMESTART, 6).' sec. -->';
