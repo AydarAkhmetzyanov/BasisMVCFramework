@@ -45,6 +45,16 @@ function loadController($pathArray, $lastSegments){
 	}
 }
 
+function getDefaultControllerPath(){
+    $result = explode("/",DEFAULT_CONTROLLER_PATH);
+    foreach($result as $key => $segment){
+            if (empty($segment)){
+                unset($result[$key]);
+            }
+        }
+    return $result;
+}
+
 function route() {
 	if (isset($_GET['url'])){
         $url = $_GET['url'];
@@ -56,22 +66,28 @@ function route() {
             }
         }
 	    if (count($urlArray)==0){
-	        loadController(explode("/",DEFAULT_CONTROLLER_PATH), array());
+	        loadController(getDefaultControllerPath(), array());
 	    } else {
 	        $controllerPath=$urlArray;
 	    	$lastSegments=array();
-	        while (!(file_exists(ROOT . DS . 'MVC' . DS . 'controllers' . DS . strtolower(implode(DS, $controllerPath)) . '.php')) and (count($controllerPath)!=0)){
-	    	    $last=array_pop($controllerPath);
-	    	    array_unshift($lastSegments, $last);
+	        while (!(file_exists(ROOT . DS . 'MVC' . DS . 'controllers' . DS . strtolower(implode(DS, $controllerPath)) . DS . DEFAULT_SECONDARY_CONTROLLER_NAME . '.php')) 
+               and !(file_exists(ROOT . DS . 'MVC' . DS . 'controllers' . DS . strtolower(implode(DS, $controllerPath)) . '.php')) 
+               and (count($controllerPath)!=0)){
+	    	        $last=array_pop($controllerPath);
+	    	        array_unshift($lastSegments, $last);
 	    	}
 		    if(count($controllerPath)==0){
-		    	loadController(explode("/", DEFAULT_CONTROLLER_PATH), $lastSegments);
-	    	} else {
+		    	loadController(getDefaultControllerPath(), $lastSegments);
+	    	} elseif (file_exists(ROOT . DS . 'MVC' . DS . 'controllers' . DS . strtolower(implode(DS, $controllerPath)) . DS . DEFAULT_SECONDARY_CONTROLLER_NAME . '.php')){
+                array_push($controllerPath, DEFAULT_SECONDARY_CONTROLLER_NAME);
+	    	    loadController($controllerPath, $lastSegments);
+	    	}
+            else {
 	    		loadController($controllerPath, $lastSegments);
 	    	}
 	    }
     } else {
-	    loadController(explode("/",DEFAULT_CONTROLLER_PATH), array());
+	    loadController(getDefaultControllerPath(), array());
 	}
 }
 

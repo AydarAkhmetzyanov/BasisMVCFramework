@@ -8,3 +8,4 @@ header("Content-type: text/html; charset=utf-8");
 
 define ('DEVELOPMENT_ENVIRONMENT',true);
 define ('DEFAULT_CONTROLLER_PATH','index');
+define ('DEFAULT_SECONDARY_CONTROLLER_NAME','index');
