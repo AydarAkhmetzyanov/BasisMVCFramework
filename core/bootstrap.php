@@ -17,7 +17,7 @@ function renderView($template_name, $_templateData=array()){
         require($template_name);
 		return true;
 	} else {
-	    exit('View not found');
+	    exit('View not found, path: '.$template_name);
 		return false;
 	}
 }
