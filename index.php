@@ -30,6 +30,15 @@ define('ROOT', realpath(dirname(__FILE__)));
 
 require_once (ROOT . DS . 'config' . DS . 'main.php');
 require_once (ROOT . DS . 'config' . DS . 'db.php');
-require_once (ROOT . DS . 'core' . DS . 'bootstrap.php');
+
+require_once (ROOT . DS . 'core' . DS . 'autoloader.class.php');
+require_once (ROOT . DS . 'core' . DS . 'controller.class.php');
+require_once (ROOT . DS . 'core' . DS . 'model.class.php');
+require_once (ROOT . DS . 'core' . DS . 'functions.php');
+
+spl_autoload_register(array('Autoloader', 'loadLibrary'));
+spl_autoload_register(array('Autoloader', 'loadModel'));
+
+route();
 
 //echo '<!--'.round(timeMeasure()-TIMESTART, 6).' sec. -->';
